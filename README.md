@@ -1,4 +1,5 @@
-# CX
+<img height=150 src="assets/cx.png"/>
+
 CX is an UI/Utility library for SFML-based applications. It is primarily made for 2D projects - games and desktop applications. It integrates well with SFML and makes creating projects easier, faster and more comfortable. It includes utility classes like grid, asset manager, audio manager and many more and UI elements like buttons, sliders, bars and so on, which can be easily included in an already existing SFML project.
 
 ## Usage
