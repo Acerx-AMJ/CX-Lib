@@ -1,88 +1,83 @@
 # CX
+CX is an UI/Utility library for SFML-based applications. It is primarily made for 2D projects - games and desktop applications. It integrates well with SFML and makes creating projects easier, faster and more comfortable. It includes utility classes like grid, asset manager, audio manager and many more and UI elements like buttons, sliders, bars and so on, which can be easily included in an already existing SFML project.
 
-### Sections
-- [What is CX?](#what-is-cx)
-- [How to build the library](#how-to-build-the-library)
-- [How to include the library in your projects](#how-to-include-the-library-in-your-projects)
-- [Dependencies](#dependencies)
-- [Contributors](#contributors)
-- [Links](#links)
+## Usage
+CX can be included in projects using CMake's fetchContent module. It depends on C++20 and [SFML 2.6](https://www.sfml-dev.org). Here's an example:
+```cmake
+cmake_minimum_required(VERSION 3.10)
+project(myProject)
 
-### What is CX?
-CX is an UI/Utility library for SFML-based applications. It is primarily made for 2D projects - games and desktop applications. It integrates well with SFML and makes creating projects easier, faster and more comfortable. It includes utility classes like grid, asset manager, audio manager and many more and UI elements like buttons, sliders, bars and so on, which can be easily included in an already existing SFML project. [Astral Surge](https://www.youtube.com/playlist?list=PLAYMpoWModGMjiDWBN77FPqGxotpOnEH2) is a 2D game made with the CX library ([Candle](https://github.com/MiguelMJ/Candle) is used for the dynamic lighting).
-### How to build the library:
+set(CXX_STANDARD 20)
+set(CXX_STANDARD_REQUIRED ON)
 
-### Linux:
-1. Locate the build directory `cx_ui_library/build/`:
+include(FetchContent)
+FetchContent_Declare(cx GIT_REPOSITORY https://github.com/Acerx-AMJ/CX-Library.git GIT_TAG main GIT_SHALLOW TRUE)
+FetchContent_MakeAvailable(cx)
+
+add_executable(${PROJECT_NAME} ${PROJECT_SOURCE_DIR}/main.cpp)
+
+find_package(SFML 2.6 COMPONENTS window system graphics audio REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE sfml-window sfml-system sfml-graphics sfml-audio cx)
+```
+
+Here's a test program to compile:
+```cpp
+#include <CX/EventHandler/EventHandler.hpp>
+#include <CX/Rect/Rect.hpp>
+
+int main() {
+   sf::RenderWindow window (sf::VideoMode(800, 600), "Hello, CX!");
+   window.setFramerateLimit(60);
+
+   cx::EventHandler event (window);
+   cx::Rect rect ({500.0f, 500.0f}, {400.0f, 300.0f}, cx::Color::red());
+
+   while (window.isOpen()) {
+      event.update();
+      window.clear();
+      rect.render(window);
+      window.display();
+   }
+}
+```
+
+Compile with:
+```bash
+cmake -B build
+cmake --build build
+```
+The executable will be located in `build/myProject` (or whatever you named your CMake project).
+
+## Building
+To build and install the library on your system first locate build directory:
 ```bash
 cd build
 ```
-2. Build the library:
+Build the library:
 ```bash
-cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local
-make
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local # for Linux/MacOS
 ```
-3. Install the library on your machine:
+And install the library on your machine:
 ```bash
 sudo make install
 ```
 
-### How to include the library in your projects:
-
-### Linux:
-You'll also have to link SFML in your project for CX to work, you can download it [here](https://www.sfml-dev.org/download/) or using your package manager. The best SFML version for CX is SFML 2.6.
-1. Set the C++ standard to 20 or above
+Here's an example on how to include the library with CMake:
 ```cmake
-set(CXX_STANDARD 20)
-set(CXX_STANDARD_REQUIRED ON)
-```
-2. Link the CX library:
-```cmake
-find_package(cx REQUIRED)
-target_link_libraries(${PROJECT_NAME} PRIVATE ${cx_LIBRARIES})
-```
-3. Link the SFML library:
-
-First download SFML, we'll use libsfml-dev in this example:
-```bash
-sudo apt install libsfml-dev
-```
-Then include it in your CMakeLists.txt file:
-```cmake
-find_package(cx REQUIRED)
-find_package(SFML 2.6 COMPONENTS window system graphics audio REQUIRED)
-target_link_libraries(${PROJECT_NAME} PRIVATE sfml-window sfml-system sfml-graphics sfml-audio ${cx_LIBRARIES})
-```
-
-Full example:
-```cmake
-# Set the CMake minimum version
 cmake_minimum_required(VERSION 3.10)
+project(myProject)
 
-# Create a new project
-project(myProject VERSION 1.0)
 set(CXX_STANDARD 20)
 set(CXX_STANDARD_REQUIRED ON)
 
-# Add the executable
 add_executable(${PROJECT_NAME} ${PROJECT_SOURCE_DIR}/main.cpp)
-set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/build)
 
-# Link both SFML and CX
 find_package(cx REQUIRED)
 find_package(SFML 2.6 COMPONENTS window system graphics audio REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE sfml-window sfml-system sfml-graphics sfml-audio ${cx_LIBRARIES})
 ```
-Actively working on getting this library on other platforms.
 
-### Dependencies
+## Credits
 This library uses SFML [(Official SFML website)](https://www.sfml-dev.org/) for most of the features, which is licensed under zlib/png license.
 
-### Contributors
-Chalcinxx. [(Youtube)](https://www.youtube.com/@chalcinxx), [(Github)](https://github.com/chalcinxx)
-
-### Links
-- [Official SFML website](https://www.sfml-dev.org/)
-- [Download SFML](https://www.sfml-dev.org/download/)
-- [Astral Surge Youtube playlist](https://www.youtube.com/playlist?list=PLAYMpoWModGMjiDWBN77FPqGxotpOnEH2)
-- [Candle (lighting library for SFML, used in Astral Surge)](https://github.com/MiguelMJ/Candle)
+This library was made by Daniel Vishnevsky and is licensed under MIT License. It was in development from December 2024 to June 2025 and republished as an effort to make all of my projects open-source.
