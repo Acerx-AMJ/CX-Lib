@@ -56,6 +56,7 @@ cd build
 Build the library:
 ```bash
 cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local # for Linux/MacOS
+make
 ```
 And install the library on your machine:
 ```bash
@@ -74,7 +75,7 @@ add_executable(${PROJECT_NAME} ${PROJECT_SOURCE_DIR}/main.cpp)
 
 find_package(cx REQUIRED)
 find_package(SFML 2.6 COMPONENTS window system graphics audio REQUIRED)
-target_link_libraries(${PROJECT_NAME} PRIVATE sfml-window sfml-system sfml-graphics sfml-audio ${cx_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} PRIVATE sfml-window sfml-system sfml-graphics sfml-audio cx)
 ```
 
 ## Credits

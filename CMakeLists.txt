@@ -6,11 +6,6 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
-   set(CMAKE_CXX_COMPILER "clang++")
-   set(CMAKE_C_COMPILER "clang")
-endif()
-
 # Include the directories
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
@@ -30,7 +25,8 @@ add_library(cx STATIC
    src/EventHandler.cpp
    src/AudioManager.cpp
    src/NavigationManager.cpp
-   src/Camera.cpp)
+   src/Camera.cpp
+)
 
 # Specify where the installed libraries should go
 install(TARGETS cx
