@@ -18,13 +18,13 @@ namespace cx
       // Constructors
 
       /// @brief Create a default vector.
-      constexpr Vec5<T>()
+      constexpr Vec5()
          : x(T()), y(T()), w(T()), h(T()), r(T()) {}
       
       /// @brief Create a new vector.
       /// @param value X, Y, W, H and R value.
       template<Number U>
-      constexpr Vec5<T>(U value)
+      constexpr Vec5(U value)
          : x(static_cast<T>(value)), y(static_cast<T>(value)),
          w(static_cast<T>(value)), h(static_cast<T>(value)),
          r(static_cast<T>(value)) {}
@@ -34,7 +34,7 @@ namespace cx
       /// @param size W, H value.
       /// @param rotation R value.
       template<Number U>
-      constexpr Vec5<T>(U pos, U size, U rotation = U())
+      constexpr Vec5(U pos, U size, U rotation = U())
          : x(static_cast<T>(pos)), y(static_cast<T>(pos)),
          w(static_cast<T>(size)), h(static_cast<T>(size)),
          r(static_cast<T>(rotation)) {}
@@ -46,7 +46,7 @@ namespace cx
       /// @param h H value.
       /// @param r R value.
       template<Number U>
-      constexpr Vec5<T>(U x, U y, U w, U h, U r = U())
+      constexpr Vec5(U x, U y, U w, U h, U r = U())
          : x(static_cast<T>(x)), y(static_cast<T>(y)), w(static_cast<T>(w)),
          h(static_cast<T>(h)), r(static_cast<T>(r)) {}
       
@@ -55,9 +55,9 @@ namespace cx
       /// @param size W, H value.
       /// @param rotation R value.
       template<Number U>
-      constexpr Vec5<T>(const Vec2<U>& pos,
-                        const Vec2<U>& size,
-                        U rotation = U())
+      constexpr Vec5(const Vec2<U>& pos,
+                     const Vec2<U>& size,
+                     U rotation = U())
          : x(static_cast<T>(pos.x)), y(static_cast<T>(pos.y)),
          w(static_cast<T>(size.x)), h(static_cast<T>(size.y)),
          r(static_cast<T>(rotation)) {}
@@ -67,9 +67,9 @@ namespace cx
       /// @param size W, H value.
       /// @param rotation R value.
       template<Number U>
-      constexpr Vec5<T>(const sf::Vector2<U>& pos,
-                        const sf::Vector2<U>& size,
-                        U rotation = U())
+      constexpr Vec5(const sf::Vector2<U>& pos,
+                     const sf::Vector2<U>& size,
+                     U rotation = U())
          : x(static_cast<T>(pos.x)), y(static_cast<T>(pos.y)),
          w(static_cast<T>(size.x)), h(static_cast<T>(size.y)),
          r(static_cast<T>(rotation)) {}
@@ -78,7 +78,7 @@ namespace cx
       /// @param bounds X, Y, W and H value.
       /// @param rotation R value.
       template<Number U>
-      constexpr Vec5<T>(const Vec4<U>& bounds, U rotation = U())
+      constexpr Vec5(const Vec4<U>& bounds, U rotation = U())
          : x(static_cast<T>(bounds.x)), y(static_cast<T>(bounds.y)),
          w(static_cast<T>(bounds.w)), h(static_cast<T>(bounds.h)),
          r(static_cast<T>(rotation)) {}
@@ -87,7 +87,7 @@ namespace cx
       /// @param bounds X, Y, W and H value.
       /// @param rotation R value.
       template<Number U>
-      constexpr Vec5<T>(const sf::Rect<U>& bounds, U rotation = U())
+      constexpr Vec5(const sf::Rect<U>& bounds, U rotation = U())
          : x(static_cast<T>(bounds.left)), y(static_cast<T>(bounds.top)),
          w(static_cast<T>(bounds.width)), h(static_cast<T>(bounds.height)),
          r(static_cast<T>(rotation)) {}
@@ -95,7 +95,7 @@ namespace cx
       /// @brief Copy a vector
       /// @param vector Vector to copy.
       template<Number U>
-      constexpr Vec5<T>(const Vec5<U>& vector)
+      constexpr Vec5(const Vec5<U>& vector)
          : x(static_cast<T>(vector.x)), y(static_cast<T>(vector.y)),
          w(static_cast<T>(vector.w)), h(static_cast<T>(vector.h)),
          r(static_cast<T>(vector.r)) {}
@@ -215,9 +215,9 @@ namespace cx
       /// @param max Maximum value.
       /// @return Random vector.
       template<Number U = T>
-      inline static Vec5<T> random(U min = U(0), U max = U(1))
+      inline static Vec5 random(U min = U(0), U max = U(1))
       {
-         return Vec5<T>(
+         return Vec5(
             cx::random<T>(min, max), cx::random<T>(min, max),
             cx::random<T>(min, max), cx::random<T>(min, max),
             cx::random<T>(min, max)
@@ -229,9 +229,9 @@ namespace cx
       /// @param max Maximum value.
       /// @return Random vector.
       template<Number U = T>
-      inline static Vec5<T> random(const Vec5<U>& min, const Vec5<U>& max = Vec5<U>(1))
+      inline static Vec5 random(const Vec5<U>& min, const Vec5<U>& max = Vec5<U>(1))
       {
-         return Vec5<T>(
+         return Vec5(
             cx::random<T>(min.x, max.x), cx::random<T>(min.y, max.y),
             cx::random<T>(min.w, max.w), cx::random<T>(min.h, max.h),
             cx::random<T>(min.r, max.r)
@@ -244,9 +244,9 @@ namespace cx
       /// @param other Other vector.
       /// @return Sum.
       template<Number U>
-      constexpr Vec5<T> operator+(const Vec5<U>& other) const
+      constexpr Vec5 operator+(const Vec5<U>& other) const
       {
-         return Vec5<T>(
+         return Vec5(
             x + static_cast<T>(other.x), y + static_cast<T>(other.y),
             w + static_cast<T>(other.w), h + static_cast<T>(other.h),
             r + static_cast<T>(other.r)
@@ -257,9 +257,9 @@ namespace cx
       /// @param other Other vector.
       /// @return Sum.
       template<Number U>
-      constexpr Vec5<T> operator+(const sf::Rect<U>& other) const
+      constexpr Vec5 operator+(const sf::Rect<U>& other) const
       {
-         return Vec5<T>(
+         return Vec5(
             x + static_cast<T>(other.left), y + static_cast<T>(other.top),
             w + static_cast<T>(other.width), h + static_cast<T>(other.height),
             r
@@ -270,9 +270,9 @@ namespace cx
       /// @param other Other vector.
       /// @return Difference.
       template<Number U>
-      constexpr Vec5<T> operator-(const Vec5<U>& other) const
+      constexpr Vec5 operator-(const Vec5<U>& other) const
       {
-         return Vec5<T>(
+         return Vec5(
             x - static_cast<T>(other.x), y - static_cast<T>(other.y),
             w - static_cast<T>(other.w), h - static_cast<T>(other.h),
             r - static_cast<T>(other.r)
@@ -283,9 +283,9 @@ namespace cx
       /// @param other Other vector.
       /// @return Difference.
       template<Number U>
-      constexpr Vec5<T> operator-(const sf::Rect<U>& other) const
+      constexpr Vec5 operator-(const sf::Rect<U>& other) const
       {
-         return Vec5<T>(
+         return Vec5(
             x - static_cast<T>(other.left), y - static_cast<T>(other.top),
             w - static_cast<T>(other.width), h - static_cast<T>(other.height),
             r
@@ -296,9 +296,9 @@ namespace cx
       /// @param factor Factor.
       /// @return Product.
       template<Number U>
-      constexpr Vec5<T> operator*(U factor) const
+      constexpr Vec5 operator*(U factor) const
       {
-         return Vec5<T>(
+         return Vec5(
             x * static_cast<T>(factor), y * static_cast<T>(factor),
             w * static_cast<T>(factor), h * static_cast<T>(factor),
             r * static_cast<T>(factor)
@@ -309,9 +309,9 @@ namespace cx
       /// @param other Other vector.
       /// @return Product.
       template<Number U>
-      constexpr Vec5<T> operator*(const Vec5<U>& other) const
+      constexpr Vec5 operator*(const Vec5<U>& other) const
       {
-         return Vec5<T>(
+         return Vec5(
             x * static_cast<T>(other.x), y * static_cast<T>(other.y),
             w * static_cast<T>(other.w), h * static_cast<T>(other.h),
             r * static_cast<T>(other.r)
@@ -322,9 +322,9 @@ namespace cx
       /// @param other Other vector.
       /// @return Product.
       template<Number U>
-      constexpr Vec5<T> operator*(const sf::Rect<U>& other) const
+      constexpr Vec5 operator*(const sf::Rect<U>& other) const
       {
-         return Vec5<T>(
+         return Vec5(
             x * static_cast<T>(other.left), y * static_cast<T>(other.top),
             w * static_cast<T>(other.width), h * static_cast<T>(other.height),
             r
@@ -335,12 +335,12 @@ namespace cx
       /// @param factor Factor.
       /// @return Quotient.
       template<Number U>
-      constexpr Vec5<T> operator/(U factor) const
+      constexpr Vec5 operator/(U factor) const
       {
          if (static_cast<T>(factor) == T(0))
             throw std::runtime_error(errors::vector::division_by_zero);
 
-         return Vec5<T>(
+         return Vec5(
             x / static_cast<T>(factor), y / static_cast<T>(factor),
             w / static_cast<T>(factor), h / static_cast<T>(factor),
             r / static_cast<T>(factor)
@@ -351,12 +351,12 @@ namespace cx
       /// @param other Other vector.
       /// @return Quotient.
       template<Number U>
-      constexpr Vec5<T> operator/(const Vec5<U>& other) const
+      constexpr Vec5 operator/(const Vec5<U>& other) const
       {
          if (Vec5<T>(other).zero())
             throw std::runtime_error(errors::vector::division_by_zero);
 
-         return Vec5<T>(
+         return Vec5(
             x / static_cast<T>(other.x), y / static_cast<T>(other.y),
             w / static_cast<T>(other.w), h / static_cast<T>(other.h),
             r / static_cast<T>(other.r)
@@ -367,12 +367,12 @@ namespace cx
       /// @param other Other vector.
       /// @return Quotient.
       template<Number U>
-      constexpr Vec5<T> operator/(const sf::Rect<U>& other) const
+      constexpr Vec5 operator/(const sf::Rect<U>& other) const
       {
          if (Vec5<T>(other).zero())
             throw std::runtime_error(errors::vector::division_by_zero);
 
-         return Vec5<T>(
+         return Vec5(
             x / static_cast<T>(other.x), y / static_cast<T>(other.y),
             w / static_cast<T>(other.w), h / static_cast<T>(other.h), r
          ); 
@@ -380,9 +380,9 @@ namespace cx
 
       /// @brief Negate vector.
       /// @return Negated vector.
-      constexpr Vec5<T> operator-() const
+      constexpr Vec5 operator-() const
       {
-         return Vec5<T>(-x, -y, -w, -h, -r);
+         return Vec5(-x, -y, -w, -h, -r);
       }
 
       // Compound arithmetic functions
@@ -391,7 +391,7 @@ namespace cx
       /// @param other Other vector.
       /// @return Sum.
       template<Number U>
-      constexpr const Vec5<T>& operator+=(const Vec5<U>& other)
+      constexpr const Vec5& operator+=(const Vec5<U>& other)
       {
          x += static_cast<T>(other.x);
          y += static_cast<T>(other.y);
@@ -405,7 +405,7 @@ namespace cx
       /// @param other Other vector.
       /// @return Sum.
       template<Number U>
-      constexpr const Vec5<T>& operator+=(const sf::Rect<U>& other)
+      constexpr const Vec5& operator+=(const sf::Rect<U>& other)
       {
          x += static_cast<T>(other.left);
          y += static_cast<T>(other.top);
@@ -418,7 +418,7 @@ namespace cx
       /// @param other Other vector.
       /// @return Difference.
       template<Number U>
-      constexpr const Vec5<T>& operator-=(const Vec5<U>& other)
+      constexpr const Vec5& operator-=(const Vec5<U>& other)
       {
          x -= static_cast<T>(other.x);
          y -= static_cast<T>(other.y);
@@ -432,7 +432,7 @@ namespace cx
       /// @param other Other vector.
       /// @return Difference.
       template<Number U>
-      constexpr const Vec5<T>& operator-=(const sf::Rect<U>& other)
+      constexpr const Vec5& operator-=(const sf::Rect<U>& other)
       {
          x -= static_cast<T>(other.left);
          y -= static_cast<T>(other.top);
@@ -445,7 +445,7 @@ namespace cx
       /// @param factor Factor.
       /// @return Product.
       template<Number U>
-      constexpr const Vec5<T>& operator*=(U factor)
+      constexpr const Vec5& operator*=(U factor)
       {
          x *= static_cast<T>(factor);
          y *= static_cast<T>(factor);
@@ -459,7 +459,7 @@ namespace cx
       /// @param other Other vector.
       /// @return Product.
       template<Number U>
-      constexpr const Vec5<T>& operator*=(const Vec5<U>& other)
+      constexpr const Vec5& operator*=(const Vec5<U>& other)
       {
          x *= static_cast<T>(other.x);
          y *= static_cast<T>(other.y);
@@ -473,7 +473,7 @@ namespace cx
       /// @param other Other vector.
       /// @return Product.
       template<Number U>
-      constexpr const Vec5<T>& operator*=(const sf::Rect<U>& other)
+      constexpr const Vec5& operator*=(const sf::Rect<U>& other)
       {
          x *= static_cast<T>(other.left);
          y *= static_cast<T>(other.top);
@@ -486,7 +486,7 @@ namespace cx
       /// @param factor Factor.
       /// @return Quotient.
       template<Number U>
-      constexpr const Vec5<T>& operator/=(U factor)
+      constexpr const Vec5& operator/=(U factor)
       {
          if (static_cast<T>(factor) == T(0))
             throw std::runtime_error(errors::vector::division_by_zero);
@@ -503,7 +503,7 @@ namespace cx
       /// @param other Other vector.
       /// @return Quotient.
       template<Number U>
-      constexpr const Vec5<T>& operator/=(const Vec5<U>& other)
+      constexpr const Vec5& operator/=(const Vec5<U>& other)
       {
          if (Vec5<T>(other).zero())
             throw std::runtime_error(errors::vector::division_by_zero);
@@ -520,7 +520,7 @@ namespace cx
       /// @param other Other vector.
       /// @return Quotient.
       template<Number U>
-      constexpr const Vec5<T>& operator/=(const sf::Rect<U>& other)
+      constexpr const Vec5& operator/=(const sf::Rect<U>& other)
       {
          if (Vec5<T>(other).zero())
             throw std::runtime_error(errors::vector::division_by_zero);
@@ -536,9 +536,9 @@ namespace cx
 
       /// @brief Get absolute vector.
       /// @return Absolute vector.
-      constexpr Vec5<T> abs() const
+      constexpr Vec5 abs() const
       {
-         return Vec5<T>(
+         return Vec5(
             (x < T(0) ? -x : x), (y < T(0) ? -y : y), (w < T(0) ? -w : w),
             (h < T(0) ? -h : h), (r < T(0) ? -r : r)
          );
@@ -549,11 +549,11 @@ namespace cx
       /// @param max Maximum value.
       /// @return Clamped vector.
       template<Number U>
-      constexpr Vec5<T> clamp(U min, U max) const
+      constexpr Vec5 clamp(U min, U max) const
       {
          const auto n_min = static_cast<T>(min);
          const auto n_max = static_cast<T>(max);
-         return Vec5<T>(
+         return Vec5(
             (x > n_max ? n_max : (x < n_min ? n_min : x)), (y > n_max ? n_max : (y < n_min ? n_min : y)),
             (w > n_max ? n_max : (w < n_min ? n_min : w)), (h > n_max ? n_max : (h < n_min ? n_min : h)),
             (r > n_max ? n_max : (r < n_min ? n_min : r))
@@ -564,10 +564,10 @@ namespace cx
       /// @param min Minimum value.
       /// @return Vector with values above minimum value.
       template<Number U>
-      constexpr Vec5<T> min(U min) const
+      constexpr Vec5 min(U min) const
       {
          const auto n_min = static_cast<T>(min);
-         return Vec5<T>(
+         return Vec5(
             (x < n_min ? n_min : x), (y < n_min ? n_min : y), (w < n_min ? n_min : w),
             (h < n_min ? n_min : h), (r < n_min ? n_min : r)
          );
@@ -577,10 +577,10 @@ namespace cx
       /// @param max Maximum value.
       /// @return Vector with values below maximum value.
       template<Number U>
-      constexpr Vec5<T> max(U max) const
+      constexpr Vec5 max(U max) const
       {
          const auto n_max = static_cast<T>(max);
-         return Vec5<T>(
+         return Vec5(
             (x > n_max ? n_max : x), (y > n_max ? n_max : y), (w > n_max ? n_max : w),
             (h > n_max ? n_max : h), (r > n_max ? n_max : r)
          );
@@ -634,7 +634,7 @@ namespace cx
 
       /// @brief Normalize vector.
       /// @return Normalized vector.
-      constexpr Vec5<T> normalize() const
+      constexpr Vec5 normalize() const
       {
          const auto mag = magnitude();
          return (mag == T(0) ? Vec5<T>() : *this / mag);
@@ -758,7 +758,7 @@ namespace cx
       /// @param t Interpolation factor.
       /// @return Middle point between this and b based on factor t.
       template<Number U>
-      constexpr Vec5<T> lerp(const Vec5<U>& other, float t) const
+      constexpr Vec5 lerp(const Vec5<U>& other, float t) const
       {
          return *this + (Vec5<T>(other) - *this) * t;
       }
@@ -917,7 +917,7 @@ namespace cx
       /// @param other Other vector.
       /// @return Vector.
       template<Number U>
-      constexpr const Vec5<T>& operator=(const Vec5<U>& other)
+      constexpr const Vec5& operator=(const Vec5<U>& other)
       {
          x = static_cast<T>(other.x);
          y = static_cast<T>(other.y);
@@ -931,7 +931,7 @@ namespace cx
       /// @param other Other vector.
       /// @return Vector.
       template<Number U>
-      constexpr const Vec5<T>& operator=(const sf::Rect<U>& other)
+      constexpr const Vec5& operator=(const sf::Rect<U>& other)
       {
          x = static_cast<T>(other.left);
          y = static_cast<T>(other.top);

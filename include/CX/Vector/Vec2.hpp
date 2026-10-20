@@ -19,32 +19,32 @@ namespace cx
       // Constructors
 
       /// @brief Create an empty vector.
-      constexpr Vec2<T>()
+      constexpr Vec2()
          : x(T()), y(T()) {}
 
       /// @brief Create a new vector.
       /// @param value X and Y value.
       template<Number U>
-      constexpr Vec2<T>(U value)
+      constexpr Vec2(U value)
          : x(static_cast<T>(value)), y(static_cast<T>(value)) {}
 
       /// @brief Create a new vector.
       /// @param x X value.
       /// @param y Y value.
       template<Number U>
-      constexpr Vec2<T>(U x, U y)
+      constexpr Vec2(U x, U y)
          : x(static_cast<T>(x)), y(static_cast<T>(y)) {}
       
       /// @brief Copy a vector.
       /// @param vector Vector to copy.
       template<Number U>
-      constexpr Vec2<T>(const Vec2<U>& vector)
+      constexpr Vec2(const Vec2<U>& vector)
          : x(static_cast<T>(vector.x)), y(static_cast<T>(vector.y)) {}
 
       /// @brief Copy a vector.
       /// @param vector Vector to copy.
       template<Number U>
-      constexpr Vec2<T>(const sf::Vector2<U>& vector)
+      constexpr Vec2(const sf::Vector2<U>& vector)
          : x(static_cast<T>(vector.x)), y(static_cast<T>(vector.y)) {}
       
       // Constructors after creation
@@ -92,9 +92,9 @@ namespace cx
       /// @param max Maximum value.
       /// @return Random vector.
       template<Number U = T>
-      inline static Vec2<T> random(U min = U(0), U max = U(1))
+      inline static Vec2 random(U min = U(0), U max = U(1))
       {
-         return Vec2<T>(cx::random<T>(min, max), cx::random<T>(min, max));
+         return Vec2(cx::random<T>(min, max), cx::random<T>(min, max));
       }
 
       /// @brief Create a random vector.
@@ -102,9 +102,9 @@ namespace cx
       /// @param max Maximum values.
       /// @return Random vector.
       template<Number U = T>
-      inline static Vec2<T> random(const Vec2<U>& min, const Vec2<U>& max = Vec2<U>(1))
+      inline static Vec2 random(const Vec2<U>& min, const Vec2<U>& max = Vec2<U>(1))
       {
-         return Vec2<T>(cx::random<T>(min.x, max.x), cx::random<T>(min.y, max.y));
+         return Vec2(cx::random<T>(min.x, max.x), cx::random<T>(min.y, max.y));
       }
 
       // Arithmetic functions
@@ -113,103 +113,103 @@ namespace cx
       /// @param other Other vector.
       /// @return Sum.
       template<Number U>
-      constexpr Vec2<T> operator+(const Vec2<U>& other) const
+      constexpr Vec2 operator+(const Vec2<U>& other) const
       {
-         return Vec2<T>(x + static_cast<T>(other.x), y + static_cast<T>(other.y));
+         return Vec2(x + static_cast<T>(other.x), y + static_cast<T>(other.y));
       }
 
       /// @brief Add two vectors together.
       /// @param other Other vector.
       /// @return Sum.
       template<Number U>
-      constexpr Vec2<T> operator+(const sf::Vector2<U>& other) const
+      constexpr Vec2 operator+(const sf::Vector2<U>& other) const
       {
-         return Vec2<T>(x + static_cast<T>(other.x), y + static_cast<T>(other.y));
+         return Vec2(x + static_cast<T>(other.x), y + static_cast<T>(other.y));
       }
 
       /// @brief Subtract two vectors apart.
       /// @param other Other vector.
       /// @return Difference.
       template<Number U>
-      constexpr Vec2<T> operator-(const Vec2<U>& other) const
+      constexpr Vec2 operator-(const Vec2<U>& other) const
       {
-         return Vec2<T>(x - static_cast<T>(other.x), y - static_cast<T>(other.y));
+         return Vec2(x - static_cast<T>(other.x), y - static_cast<T>(other.y));
       }
 
       /// @brief Subtract two vectors apart.
       /// @param other Other vector.
       /// @return Difference.
       template<Number U>
-      constexpr Vec2<T> operator-(const sf::Vector2<U>& other) const
+      constexpr Vec2 operator-(const sf::Vector2<U>& other) const
       {
-         return Vec2<T>(x - static_cast<T>(other.x), y - static_cast<T>(other.y));
+         return Vec2(x - static_cast<T>(other.x), y - static_cast<T>(other.y));
       }
 
       /// @brief Multiply vector by the factor.
       /// @param factor Factor.
       /// @return Product.
       template<Number U>
-      constexpr Vec2<T> operator*(U factor) const
+      constexpr Vec2 operator*(U factor) const
       {
-         return Vec2<T>(x * static_cast<T>(factor), y * static_cast<T>(factor));
+         return Vec2(x * static_cast<T>(factor), y * static_cast<T>(factor));
       }
 
       /// @brief Multiply vectors together.
       /// @param other Other vector.
       /// @return Product.
       template<Number U>
-      constexpr Vec2<T> operator*(const Vec2<U>& other) const
+      constexpr Vec2 operator*(const Vec2<U>& other) const
       {
-         return Vec2<T>(x * static_cast<T>(other.x), y * static_cast<T>(other.y));
+         return Vec2(x * static_cast<T>(other.x), y * static_cast<T>(other.y));
       }
 
       /// @brief Multiply vectors together.
       /// @param other Other vector.
       /// @return Product.
       template<Number U>
-      constexpr Vec2<T> operator*(const sf::Vector2<U>& other) const
+      constexpr Vec2 operator*(const sf::Vector2<U>& other) const
       {
-         return Vec2<T>( x * static_cast<T>(other.x), y * static_cast<T>(other.y));
+         return Vec2( x * static_cast<T>(other.x), y * static_cast<T>(other.y));
       }
 
       /// @brief Divide vector by the factor.
       /// @param factor Factor.
       /// @return Quotient.
       template<Number U>
-      constexpr Vec2<T> operator/(U factor) const
+      constexpr Vec2 operator/(U factor) const
       {
          if (static_cast<T>(factor) == T(0))
             throw std::runtime_error(errors::vector::division_by_zero);
-         return Vec2<T>(x / static_cast<T>(factor), y / static_cast<T>(factor));
+         return Vec2(x / static_cast<T>(factor), y / static_cast<T>(factor));
       }
 
       /// @brief Divide vector by the other.
       /// @param other Other vector.
       /// @return Quotient.
       template<Number U>
-      constexpr Vec2<T> operator/(const Vec2<U>& other) const
+      constexpr Vec2 operator/(const Vec2<U>& other) const
       {
          if (Vec2<T>(other).zero())
             throw std::runtime_error(errors::vector::division_by_zero);
-         return Vec2<T>(x / static_cast<T>(other.x), y / static_cast<T>(other.y));
+         return Vec2(x / static_cast<T>(other.x), y / static_cast<T>(other.y));
       }
 
       /// @brief Divide vector by the other.
       /// @param other Other vector.
       /// @return Quotient.
       template<Number U>
-      constexpr Vec2<T> operator/(const sf::Vector2<U>& other) const
+      constexpr Vec2 operator/(const sf::Vector2<U>& other) const
       {
          if (Vec2<T>(other).zero())
             throw std::runtime_error(errors::vector::division_by_zero);
-         return Vec2<T>(x / static_cast<T>(other.x), y / static_cast<T>(other.y));
+         return Vec2(x / static_cast<T>(other.x), y / static_cast<T>(other.y));
       }
 
       /// @brief Negate vector.
       /// @return Negated vector.
-      constexpr Vec2<T> operator-() const
+      constexpr Vec2 operator-() const
       {
-         return Vec2<T>(-x, -y);
+         return Vec2(-x, -y);
       }
 
       // Compound arithmetic functions
@@ -218,7 +218,7 @@ namespace cx
       /// @param other Other vector.
       /// @return Sum.
       template<Number U>
-      constexpr const Vec2<T>& operator+=(const Vec2<U>& other)
+      constexpr const Vec2& operator+=(const Vec2<U>& other)
       {
          x += static_cast<T>(other.x);
          y += static_cast<T>(other.y);
@@ -229,7 +229,7 @@ namespace cx
       /// @param other Other vector.
       /// @return Sum.
       template<Number U>
-      constexpr const Vec2<T>& operator+=(const sf::Vector2<U>& other)
+      constexpr const Vec2& operator+=(const sf::Vector2<U>& other)
       {
          x += static_cast<T>(other.x);
          y += static_cast<T>(other.y);
@@ -240,7 +240,7 @@ namespace cx
       /// @param other Other vector.
       /// @return Difference.
       template<Number U>
-      constexpr const Vec2<T>& operator-=(const Vec2<U>& other)
+      constexpr const Vec2& operator-=(const Vec2<U>& other)
       {
          x -= static_cast<T>(other.x);
          y -= static_cast<T>(other.y);
@@ -251,7 +251,7 @@ namespace cx
       /// @param other Other vector.
       /// @return Difference.
       template<Number U>
-      constexpr const Vec2<T>& operator-=(const sf::Vector2<U>& other)
+      constexpr const Vec2& operator-=(const sf::Vector2<U>& other)
       {
          x -= static_cast<T>(other.x);
          y -= static_cast<T>(other.y);
@@ -262,7 +262,7 @@ namespace cx
       /// @param factor Factor.
       /// @return Product.
       template<Number U>
-      constexpr const Vec2<T>& operator*=(U factor)
+      constexpr const Vec2& operator*=(U factor)
       {
          x *= static_cast<T>(factor);
          y *= static_cast<T>(factor);
@@ -273,7 +273,7 @@ namespace cx
       /// @param other Other vector.
       /// @return Product.
       template<Number U>
-      constexpr const Vec2<T>& operator*=(const Vec2<U>& other)
+      constexpr const Vec2& operator*=(const Vec2<U>& other)
       {
          x *= static_cast<T>(other.x);
          y *= static_cast<T>(other.y);
@@ -284,7 +284,7 @@ namespace cx
       /// @param other Other vector.
       /// @return Product.
       template<Number U>
-      constexpr const Vec2<T>& operator*=(const sf::Vector2<U>& other)
+      constexpr const Vec2& operator*=(const sf::Vector2<U>& other)
       {
          x *= static_cast<T>(other.x);
          y *= static_cast<T>(other.y);
@@ -295,7 +295,7 @@ namespace cx
       /// @param factor Factor.
       /// @return Quotient.
       template<Number U>
-      constexpr const Vec2<T>& operator/=(U factor)
+      constexpr const Vec2& operator/=(U factor)
       {
          if (static_cast<T>(factor) == T(0))
             throw std::runtime_error(errors::vector::division_by_zero);
@@ -308,7 +308,7 @@ namespace cx
       /// @param other Other vector.
       /// @return Quotient.
       template<Number U>
-      constexpr const Vec2<T>& operator/=(const Vec2<U>& other)
+      constexpr const Vec2& operator/=(const Vec2<U>& other)
       {
          if (Vec2<T>(other).zero())
             throw std::runtime_error(errors::vector::division_by_zero);
@@ -321,7 +321,7 @@ namespace cx
       /// @param other Other vector.
       /// @return Quotient.
       template<Number U>
-      constexpr const Vec2<T>& operator/=(const sf::Vector2<U>& other)
+      constexpr const Vec2& operator/=(const sf::Vector2<U>& other)
       {
          if (Vec2<T>(other).zero())
             throw std::runtime_error(errors::vector::division_by_zero);
@@ -334,9 +334,9 @@ namespace cx
 
       /// @brief Get absolute vector.
       /// @return Absolute vector.
-      constexpr Vec2<T> abs() const
+      constexpr Vec2 abs() const
       {
-         return Vec2<T>((x < T(0) ? -x : x), (y < T(0) ? -y : y));
+         return Vec2((x < T(0) ? -x : x), (y < T(0) ? -y : y));
       }
 
       /// @brief Clamp values between the given range.
@@ -344,12 +344,12 @@ namespace cx
       /// @param max Maximum value.
       /// @return Clamped vector.
       template<Number U>
-      constexpr Vec2<T> clamp(U min, U max) const
+      constexpr Vec2 clamp(U min, U max) const
       {
          const auto n_min = static_cast<T>(min);
          const auto n_max = static_cast<T>(max);
 
-         return Vec2<T>(
+         return Vec2(
             (x > n_max ? n_max : (x < n_min ? n_min : x)),
             (y > n_max ? n_max : (y < n_min ? n_min : y))
          );
@@ -359,20 +359,20 @@ namespace cx
       /// @param min Minimum value.
       /// @return Vector with values above minimum value.
       template<Number U>
-      constexpr Vec2<T> min(U min) const
+      constexpr Vec2 min(U min) const
       {
          const auto n_min = static_cast<T>(min);
-         return Vec2<T>((x < n_min ? n_min : x), (y < n_min ? n_min : y));
+         return Vec2((x < n_min ? n_min : x), (y < n_min ? n_min : y));
       }
 
       /// @brief Set values below maximum value.
       /// @param max Maximum value.
       /// @return Vector with values below maximum value.
       template<Number U>
-      constexpr Vec2<T> max(U max) const
+      constexpr Vec2 max(U max) const
       {
          const auto n_max = static_cast<T>(max);
-         return Vec2<T>((x > n_max ? n_max : x), (y > n_max ? n_max : y));
+         return Vec2((x > n_max ? n_max : x), (y > n_max ? n_max : y));
       }
 
       /// @brief Get dot product.
@@ -491,18 +491,18 @@ namespace cx
       /// @param other Other vector.
       /// @return Projected vector.
       template<Number U>
-      constexpr Vec2<T> project(const Vec2<U>& other) const
+      constexpr Vec2 project(const Vec2<U>& other) const
       {
-         return Vec2<T>(other * (dot(other) / other.magnitude_squared()));
+         return Vec2(other * (dot(other) / other.magnitude_squared()));
       }
 
       /// @brief Project vector onto the other.
       /// @param other Other vector.
       /// @return Projected vector.
       template<Number U>
-      constexpr Vec2<T> project(const sf::Vector2<U>& other) const
+      constexpr Vec2 project(const sf::Vector2<U>& other) const
       {
-         return Vec2<T>(other * (dot(other) / Vec2<U>(other).magnitude_squared()));
+         return Vec2(other * (dot(other) / Vec2<U>(other).magnitude_squared()));
       }
 
       /// @brief Project vector onto the line.
@@ -531,7 +531,7 @@ namespace cx
       /// @param normal Normal.
       /// @return Reflected vector.
       template<Number U>
-      constexpr Vec2<T> reflect(const Vec2<U>& normal) const
+      constexpr Vec2 reflect(const Vec2<U>& normal) const
       {
          return *this - normal * (2 * dot(normal));
       }
@@ -540,14 +540,14 @@ namespace cx
       /// @param normal Normal.
       /// @return Reflected vector.
       template<Number U>
-      constexpr Vec2<T> reflect(const sf::Vector2<U>& normal) const
+      constexpr Vec2 reflect(const sf::Vector2<U>& normal) const
       {
          return *this - normal * (2 * dot(normal));
       }
 
       /// @brief Normalize vector.
       /// @return Normalized vector.
-      constexpr Vec2<T> normalize() const
+      constexpr Vec2 normalize() const
       {
          const T mag = magnitude();
          return (mag == T(0) ? Vec2<T>() : *this / mag);
@@ -555,16 +555,16 @@ namespace cx
 
       /// @brief Get vector normal.
       /// @return Normal.
-      constexpr Vec2<T> normal() const
+      constexpr Vec2 normal() const
       {
-         return Vec2<T>(-y, x).normalize();
+         return Vec2(-y, x).normalize();
       }
 
       /// @brief Rotate vector.
       /// @param radians Angle in radians.
       /// @return Rotated vector.
       template<Floating U>
-      constexpr Vec2<T> rotate(U radians) const
+      constexpr Vec2 rotate(U radians) const
       {
          if (radians == U(0))
             return *this;
@@ -572,13 +572,13 @@ namespace cx
          const auto sin = std::sin(radians);
          const auto cos = std::cos(radians);
 
-         return Vec2<T>(x * cos - y * sin, x * sin + y * cos);
+         return Vec2(x * cos - y * sin, x * sin + y * cos);
       }
 
       /// @brief Rotate vector.
       /// @param angle Angle.
       /// @return Rotated vector.
-      constexpr Vec2<T> rotate(const Angle& angle) const
+      constexpr Vec2 rotate(const Angle& angle) const
       {
          return rotate(angle.radians());
       }
@@ -588,7 +588,7 @@ namespace cx
       /// @param angle Angle in radians.
       /// @return Rotated vector relative to a point.
       template<Floating U, Number Y>
-      constexpr Vec2<T> rotate_relative_to(const Vec2<Y>& point, U radians) const
+      constexpr Vec2 rotate_relative_to(const Vec2<Y>& point, U radians) const
       {
          return point + (*this - point).rotate(radians);
       }
@@ -598,7 +598,7 @@ namespace cx
       /// @param angle Angle.
       /// @return Rotated vector relative to a point.
       template<Number Y>
-      constexpr Vec2<T> rotate_relative_to(const Vec2<Y>& point, const Angle& angle) const
+      constexpr Vec2 rotate_relative_to(const Vec2<Y>& point, const Angle& angle) const
       {
          return rotate_relative_to(point, angle.radians());
       }
@@ -607,18 +607,18 @@ namespace cx
       /// @param other Other vector.
       /// @return Normalized direction.
       template<Number U>
-      constexpr Vec2<T> direction_to(const Vec2<U>& other) const
+      constexpr Vec2 direction_to(const Vec2<U>& other) const
       {
-         return Vec2<T>(other - *this).normalize();
+         return Vec2(other - *this).normalize();
       }
 
       /// @brief Get direction to other vector.
       /// @param other Other vector.
       /// @return Normalized direction.
       template<Number U>
-      constexpr Vec2<T> direction_to(const sf::Vector2<U>& other) const
+      constexpr Vec2 direction_to(const sf::Vector2<U>& other) const
       {
-         return Vec2<T>(Vec2<U>(other) - *this).normalize();
+         return Vec2(Vec2<U>(other) - *this).normalize();
       }
 
       /// @brief Linearly interpolate between two vectors.
@@ -626,7 +626,7 @@ namespace cx
       /// @param t Interpolation factor.
       /// @return Middle point between this and b based on factor t.
       template<Number U, Floating Y = float>
-      constexpr Vec2<T> lerp(const Vec2<U>& b, Y t) const
+      constexpr Vec2 lerp(const Vec2<U>& b, Y t) const
       {
          return *this + (b - *this) * t;
       }
@@ -636,9 +636,9 @@ namespace cx
       /// @param t Interpolation factor.
       /// @return Middle point between this and b based on factor t.
       template<Number U, Floating Y = float>
-      constexpr Vec2<T> lerp(const sf::Vector2<U>& b, Y t) const
+      constexpr Vec2 lerp(const sf::Vector2<U>& b, Y t) const
       {
-         return *this + (Vec2<U>(b) - *this) * t;
+         return *this + (Vec2<T>(b) - *this) * t;
       }
 
       // Condition functions
@@ -713,7 +713,7 @@ namespace cx
       /// @param other Other vector.
       /// @return Vector.
       template<Number U>
-      constexpr const Vec2<T>& operator=(const Vec2<U>& other)
+      constexpr const Vec2& operator=(const Vec2<U>& other)
       {
          x = static_cast<T>(other.x);
          y = static_cast<T>(other.y);
@@ -724,7 +724,7 @@ namespace cx
       /// @param other Other vector.
       /// @return Vector.
       template<Number U>
-      constexpr const Vec2<T>& operator=(const sf::Vector2<U>& other)
+      constexpr const Vec2& operator=(const sf::Vector2<U>& other)
       {
          x = static_cast<T>(other.x);
          y = static_cast<T>(other.y);
