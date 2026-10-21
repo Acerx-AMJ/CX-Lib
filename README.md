@@ -50,18 +50,11 @@ cmake --build build
 The executable will be located in `build/myProject` (or whatever you named your CMake project).
 
 ## Building
-To build and install the library on your system first locate build directory:
+Cross-platform way to build and install the library, you need to be in the same directory as CMakeLists.txt file:
 ```bash
-cd build
-```
-Build the library:
-```bash
-cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local # for Linux/MacOS
-make
-```
-And install the library on your machine:
-```bash
-sudo make install
+cmake -S . -B build
+cmake --build build --config Release
+cmake --install build --config Release # needs sudo on Linux/MacOS
 ```
 
 Here's an example on how to include the library with CMake:
