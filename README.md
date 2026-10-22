@@ -8,8 +8,8 @@ CX can be included in projects using CMake's fetchContent module. It depends on 
 cmake_minimum_required(VERSION 3.10)
 project(myProject)
 
-set(CXX_STANDARD 20)
-set(CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include(FetchContent)
 FetchContent_Declare(cx GIT_REPOSITORY https://github.com/Acerx-AMJ/CX-Library.git GIT_TAG main GIT_SHALLOW TRUE)
@@ -53,8 +53,8 @@ The executable will be located in `build/myProject` (or whatever you named your 
 Cross-platform way to build and install the library, you need to be in the same directory as CMakeLists.txt file:
 ```bash
 cmake -S . -B build
-cmake --build build --config Release
-cmake --install build --config Release # needs sudo on Linux/MacOS
+cmake --build build
+cmake --install build # needs sudo on Linux/MacOS
 ```
 
 Here's an example on how to include the library with CMake:
@@ -62,8 +62,8 @@ Here's an example on how to include the library with CMake:
 cmake_minimum_required(VERSION 3.10)
 project(myProject)
 
-set(CXX_STANDARD 20)
-set(CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(${PROJECT_NAME} ${PROJECT_SOURCE_DIR}/main.cpp)
 
