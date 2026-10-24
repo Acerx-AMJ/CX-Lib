@@ -23,7 +23,7 @@ add_library(cx STATIC
    src/Camera.cpp
 )
 
-target_compile_definitions(cx PRIVATE CX_SHADER_PATH="${CMAKE_INSTALL_PREFIX}/share/cx/shaders")
+target_compile_definitions(cx PRIVATE CX_SHADER_PATH="${CMAKE_INSTALL_PREFIX}/share/cx/shaders/")
 target_include_directories(cx PUBLIC
    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
    $<INSTALL_INTERFACE:include>)
