@@ -490,4 +490,9 @@ namespace cx
    {
       return camera;
    }
+
+   const sf::View& Camera::get_camera() const
+   {
+      return camera;
+   }
 }

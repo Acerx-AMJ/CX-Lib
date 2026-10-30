@@ -505,6 +505,16 @@ namespace cx
       return text;
    }
 
+   const sf::RectangleShape& Button::get_background() const
+   {
+      return rect;
+   }
+
+   const sf::Text& Button::get_text() const
+   {
+      return text;
+   }
+
    // Private functions
 
    void Button::recenter()

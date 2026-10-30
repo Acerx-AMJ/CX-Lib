@@ -466,6 +466,16 @@ namespace cx
       return text;
    }
 
+   const sf::RectangleShape& TextInput::get_background() const
+   {
+      return rect;
+   }
+
+   const sf::Text& TextInput::get_text() const
+   {
+      return text;
+   }
+
    // Private functions
 
    void TextInput::recenter()

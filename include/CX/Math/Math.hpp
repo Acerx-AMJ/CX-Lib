@@ -2,6 +2,8 @@
 #define CX_MATH_MATH_HPP
 
 #include "CX/Math/Constants.hpp"
+#include <cstddef>
+#include <cstdint>
 
 namespace cx
 {

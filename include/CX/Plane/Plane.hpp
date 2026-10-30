@@ -295,6 +295,31 @@ namespace cx
       /// @return Vertex.
       sf::Vertex& get_vertex(size_t index);
 
+      /// @brief Get plane.
+      /// @return Plane.
+      const sf::VertexArray& get_plane() const;
+
+      /// @brief Get top-left vertex.
+      /// @return Top-left vertex.
+      const sf::Vertex& get_top_left_vertex() const;
+
+      /// @brief Get top-right vertex.
+      /// @return Top-right vertex.
+      const sf::Vertex& get_top_right_vertex() const;
+
+      /// @brief Get bottom-right vertex.
+      /// @return Bottom-right vertex.
+      const sf::Vertex& get_bottom_right_vertex() const;
+
+      /// @brief Get bottom-left vertex.
+      /// @return Bottom-left vertex.
+      const sf::Vertex& get_bottom_left_vertex() const;
+
+      /// @brief Get vertex by index.
+      /// @param index Index.
+      /// @return Vertex.
+      const sf::Vertex& get_vertex(size_t index) const;
+
    private:
       sf::VertexArray rect;
       Vec2f center;

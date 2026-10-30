@@ -456,6 +456,11 @@ namespace cx
       return text;
    }
 
+   const sf::Text& Text::get_text() const
+   {
+      return text;
+   }
+
    // Private functions
 
    void Text::recenter()

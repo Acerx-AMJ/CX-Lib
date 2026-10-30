@@ -367,6 +367,16 @@ namespace cx
       return background;
    }
 
+   const sf::RectangleShape& Bar::get_foreground() const
+   {
+      return foreground;
+   }
+
+   const sf::RectangleShape& Bar::get_background() const
+   {
+      return background;
+   }
+
    // Private functions
 
    void Bar::updateBar()

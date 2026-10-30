@@ -141,6 +141,10 @@ namespace cx
       /// @return Rectangle.
       sf::RectangleShape& get_rectangle();
 
+      /// @brief Get the rectangle.
+      /// @return Rectangle.
+      const sf::RectangleShape& get_rectangle() const;
+
    private:
       sf::RectangleShape rect;
    };

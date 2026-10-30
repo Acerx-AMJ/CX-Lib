@@ -355,4 +355,14 @@ namespace cx
    {
       return animations;
    }
+
+   const sf::RectangleShape& Sprite::get_sprite() const
+   {
+      return rect;
+   }
+
+   const std::unordered_map<std::string, Animation>& Sprite::get_animations() const
+   {
+      return animations;
+   }
 }

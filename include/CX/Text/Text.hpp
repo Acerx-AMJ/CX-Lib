@@ -225,6 +225,10 @@ namespace cx
       /// @return Text.
       sf::Text& get_text();
 
+      /// @brief Get text.
+      /// @return Text.
+      const sf::Text& get_text() const;
+
    private:
       sf::Text text;
 

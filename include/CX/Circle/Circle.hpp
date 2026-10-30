@@ -170,6 +170,10 @@ namespace cx
       /// @return Circle.
       sf::CircleShape& get_circle();
 
+      /// @brief Get the circle.
+      /// @return Circle.
+      const sf::CircleShape& get_circle() const;
+
    private:
       sf::CircleShape circle;
    };

@@ -372,6 +372,24 @@ namespace cx
       /// @return True if mouse is held down.
       bool is_mouse_down() const;
 
+      // Extra values
+
+      /// @brief Set an index. Index does nothing by itself. Serves as extra data.
+      /// @param index Index.
+      void set_index(size_t index);
+
+      /// @brief Set a value. Value does nothing by itself. Serves as extra data.
+      /// @param value Value.
+      void set_value(size_t value);
+
+      /// @brief Get index.
+      /// @return Index.
+      size_t get_index() const;
+
+      /// @brief Get value.
+      /// @return Value.
+      size_t get_value() const;
+
       // Render functions
 
       /// @brief Render the element.
@@ -389,6 +407,9 @@ namespace cx
       bool clicked    = false;
       bool mouse_down = false;
       bool mouse_up   = false;
+
+      size_t index;
+      size_t value;
 
       using func = std::function<void(UIElement&)>;
       std::shared_ptr<func> on_update_func = std::make_shared<func>([](UIElement&){});

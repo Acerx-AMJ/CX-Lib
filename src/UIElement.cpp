@@ -406,4 +406,26 @@ namespace cx
 
       (*on_update_func)(*this);
    }
+
+   // Extra values
+
+   void UIElement::set_index(size_t index)
+   {
+      this->index = index;
+   }
+
+   void UIElement::set_value(size_t value)
+   {
+      this->value = value;
+   }
+
+   size_t UIElement::get_index() const
+   {
+      return this->value;
+   }
+
+   size_t UIElement::get_value() const
+   {
+      return this->value;
+   }
 }

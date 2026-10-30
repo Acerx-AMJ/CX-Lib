@@ -197,4 +197,9 @@ namespace cx
    {
       return circle;
    }
+
+   const sf::CircleShape& Circle::get_circle() const
+   {
+      return circle;
+   }
 }

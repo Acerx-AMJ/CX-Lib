@@ -231,6 +231,14 @@ namespace cx
       /// @return Animations.
       std::unordered_map<std::string, Animation>& get_animations();
 
+      /// @brief Get sprite.
+      /// @return Sprite.
+      const sf::RectangleShape& get_sprite() const;
+
+      /// @brief Get animations.
+      /// @return Animations.
+      const std::unordered_map<std::string, Animation>& get_animations() const;
+
    private:
       sf::RectangleShape rect;
 

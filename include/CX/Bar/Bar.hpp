@@ -261,6 +261,14 @@ namespace cx
       /// @return Background.
       sf::RectangleShape& get_background();
 
+      /// @brief Get foreground.
+      /// @return Foreground.
+      const sf::RectangleShape& get_foreground() const;
+
+      /// @brief Get background.
+      /// @return Background.
+      const sf::RectangleShape& get_background() const;
+
    private:
       sf::Shader clip_shader;
       sf::RectangleShape background;

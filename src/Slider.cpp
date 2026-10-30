@@ -712,6 +712,21 @@ namespace cx
       return background;
    }
 
+   const sf::RectangleShape& Slider::get_knob() const
+   {
+      return knob;
+   }
+
+   const sf::RectangleShape& Slider::get_foreground() const
+   {
+      return foreground;
+   }
+
+   const sf::RectangleShape& Slider::get_background() const
+   {
+      return background;
+   }
+
    // Private functions
 
    void Slider::calculate_value()

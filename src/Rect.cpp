@@ -160,4 +160,9 @@ namespace cx
    {
       return rect;
    }
+
+   const sf::RectangleShape& Rect::get_rectangle() const
+   {
+      return rect;
+   }
 }

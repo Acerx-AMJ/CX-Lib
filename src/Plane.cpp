@@ -392,6 +392,36 @@ namespace cx
       return rect[index];
    }
 
+   const sf::VertexArray& Plane::get_plane() const
+   {
+      return rect;
+   }
+
+   const sf::Vertex& Plane::get_top_left_vertex() const
+   {
+      return rect[0];
+   }
+
+   const sf::Vertex& Plane::get_top_right_vertex() const
+   {
+      return rect[1];
+   }
+
+   const sf::Vertex& Plane::get_bottom_right_vertex() const
+   {
+      return rect[2];
+   }
+
+   const sf::Vertex& Plane::get_bottom_left_vertex() const
+   {
+      return rect[3];
+   }
+
+   const sf::Vertex& Plane::get_vertex(size_t index) const
+   {
+      return rect[index];
+   }
+
    // Private functions
 
    void Plane::redraw()

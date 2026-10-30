@@ -247,6 +247,14 @@ namespace cx
       /// @return Text.
       sf::Text& get_text();
 
+      /// @brief Get background.
+      /// @return Background.
+      const sf::RectangleShape& get_background() const;
+
+      /// @brief Get text.
+      /// @return Text.
+      const sf::Text& get_text() const;
+
    private:
       bool button_disabled = false;
       sf::RectangleShape rect;

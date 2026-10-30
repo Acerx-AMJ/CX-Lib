@@ -337,6 +337,10 @@ namespace cx
       /// @return Camera.
       sf::View& get_camera();
 
+      /// @brief Get camera.
+      /// @return Camera.
+      const sf::View& get_camera() const;
+
    private:
       sf::View camera;
 
