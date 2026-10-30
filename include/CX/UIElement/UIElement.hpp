@@ -408,8 +408,8 @@ namespace cx
       bool mouse_down = false;
       bool mouse_up   = false;
 
-      size_t index;
-      size_t value;
+      size_t index = 0;
+      size_t value = 0;
 
       using func = std::function<void(UIElement&)>;
       std::shared_ptr<func> on_update_func = std::make_shared<func>([](UIElement&){});
