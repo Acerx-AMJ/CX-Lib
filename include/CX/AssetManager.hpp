@@ -134,7 +134,7 @@ namespace cx
       /// @param directory Directory.
       /// @param relative_to_root Is directory relative to root.
       /// @param recursive Should subdirectories be loaded.
-      void load_texture_dir(const fs::path& directory = "",
+      void load_texture_dir(const fs::path& directory = ".",
                             bool relative_to_root = true,
                             bool recursive = true);
 
@@ -142,7 +142,7 @@ namespace cx
       /// @param directory Directory.
       /// @param relative_to_root Is directory relative to root.
       /// @param recursive Should subdirectories be loaded.
-      void load_sound_dir(const fs::path& directory = "",
+      void load_sound_dir(const fs::path& directory = ".",
                           bool relative_to_root = true,
                           bool recursive = true);
 
@@ -150,7 +150,7 @@ namespace cx
       /// @param directory Directory.
       /// @param relative_to_root Is directory relative to root.
       /// @param recursive Should subdirectories be loaded.
-      void load_song_dir(const fs::path& directory = "",
+      void load_song_dir(const fs::path& directory = ".",
                          bool relative_to_root = true,
                          bool recursive = true);
 
@@ -158,7 +158,7 @@ namespace cx
       /// @param directory Directory.
       /// @param relative_to_root Is directory relative to root.
       /// @param recursive Should subdirectories be loaded.
-      void load_font_dir(const fs::path& directory = "",
+      void load_font_dir(const fs::path& directory = ".",
                          bool relative_to_root = true,
                          bool recursive = true);
 
@@ -170,7 +170,7 @@ namespace cx
       /// @param relative_to_root Is directory relative to root.
       /// @param recursive Should subdirectories be loaded.
       void load_texture_dir_async(const std::function<void(bool)>& on_finished,
-                                  const fs::path& directory = "",
+                                  const fs::path& directory = ".",
                                   bool relative_to_root = true,
                                   bool recursive = true);
 
@@ -180,7 +180,7 @@ namespace cx
       /// @param relative_to_root Is directory relative to root.
       /// @param recursive Should subdirectories be loaded.
       void load_sound_dir_async(const std::function<void(bool)>& on_finished,
-                                  const fs::path& directory = "",
+                                  const fs::path& directory = ".",
                                   bool relative_to_root = true,
                                   bool recursive = true);
 
@@ -190,7 +190,7 @@ namespace cx
       /// @param relative_to_root Is directory relative to root.
       /// @param recursive Should subdirectories be loaded.
       void load_song_dir_async(const std::function<void(bool)>& on_finished,
-                            const fs::path& directory = "",
+                            const fs::path& directory = ".",
                             bool relative_to_root = true,
                             bool recursive = true);
 
@@ -200,7 +200,7 @@ namespace cx
       /// @param relative_to_root Is directory relative to root.
       /// @param recursive Should subdirectories be loaded.
       void load_font_dir_async(const std::function<void(bool)>& on_finished,
-                                  const fs::path& directory = "",
+                                  const fs::path& directory = ".",
                                   bool relative_to_root = true,
                                   bool recursive = true);
 

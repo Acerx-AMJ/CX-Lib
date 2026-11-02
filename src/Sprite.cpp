@@ -166,136 +166,121 @@ namespace cx
 
    void Sprite::update_animation(float dt)
    {
-      if (!playing || !animations.contains(current_animation))
+      if (!playing || !animation_exists_by_id(current_anim))
          return;
 
       elapsedTime += dt;
 
-      if (elapsedTime * speedMult >= animations.at(current_animation).speed)
+      if (elapsedTime * speedMult >= get_animation_by_id(current_anim).speed)
          advance_frame();
    }
 
    void Sprite::play()
    {
-      if (!current_animation.empty())
+      if (current_anim != std::string::npos)
          playing = true;
    }
 
    void Sprite::pause()
    {
-      if (!current_animation.empty())
+      if (current_anim != std::string::npos)
          playing = false;
    }
 
    void Sprite::reset()
    {
-      playing = !idle.empty();
-      index = 0;
+      playing = default_anim != std::string::npos;
+      frame = 0;
       elapsedTime = 0.f;
 
-      if (!animations.contains(current_animation))
+      if (animation_exists_by_id(current_anim))
       {
-         const Animation& anim {animations.at(current_animation)};
+         const Animation &anim = get_animation_by_id(current_anim);
          rect.setTextureRect(Vec4i(anim.posX, anim.posY, anim.sizeX, anim.sizeY));
       }
 
-      current_animation = idle;
+      current_anim = default_anim;
    }
 
    void Sprite::advance_frame()
    {
-      if (!animations.contains(current_animation))
+      if (!animation_exists_by_id(current_anim))
          return;
-      const Animation& anim {animations.at(current_animation)};
+      const Animation &anim = get_animation_by_id(current_anim);
 
       elapsedTime = 0.f;
 
       if (anim.reversed)
-         index = (index - 1 + anim.length) % anim.length;
+         frame = (frame - 1 + anim.length) % anim.length;
       else
-         index = (index + 1) % anim.length;
+         frame = (frame + 1) % anim.length;
 
       rect.setTextureRect(Vec4i(
-         anim.posX + (anim.gap * static_cast<unsigned>(index)) + (anim.sizeX * static_cast<unsigned>(index)),
+         anim.posX + (anim.gap * static_cast<unsigned>(frame)) + (anim.sizeX * static_cast<unsigned>(frame)),
          anim.posY,
          anim.sizeX,
          anim.sizeY
       ));
 
-      if (!(index == anim.length - 1 && !anim.reversed) && !(index == 0 && anim.reversed))
+      if (!(frame == anim.length - 1 && !anim.reversed) && !(frame == 0 && anim.reversed))
          return;
 
       if (anim.looping)
          return;
 
       elapsedTime = 0.f;
-      index = 0;
+      frame = 0;
 
       rect.setTextureRect(Vec4i(anim.posX, anim.posY, anim.sizeX, anim.sizeY));
 
-      if (animations.contains(idle))
-         current_animation = idle;
+      if (animation_exists_by_id(default_anim))
+         current_anim = default_anim;
       else
       {
          playing = false;
-         current_animation = "";
+         current_anim = std::string::npos;
       }
    }
 
-   void Sprite::add_animation(const std::string& identifier,
-                              const Animation& animation,
-                              bool default_animation)
+   void Sprite::set_default_animation(size_t id)
    {
-      if (!animations.contains(identifier))
-         animations.emplace(identifier, animation);
-
-      if (default_animation)
-      {
-         current_animation = idle = identifier;
-         playing = true;
-      }
-   }
-
-   void Sprite::set_default_animation(const std::string& identifier)
-   {
-      current_animation = idle = identifier;
+      current_anim = default_anim = id;
       playing = true;
    }
 
-   void Sprite::play_animation(const std::string& identifier, bool reset)
+   void Sprite::play_animation(size_t id, bool reset)
    {
-      if (!reset && identifier == current_animation)
+      if (!reset && id == current_anim)
          return;
 
-      if (animations.contains(identifier) && (current_animation != identifier
-         || !animations.at(identifier).looping))
+      if (animation_exists_by_id(id) && (current_anim != id || !get_animation_by_id(id).looping))
       {
-         index = 0;
+         frame = 0;
          elapsedTime = 0.f;
       }
 
-      current_animation = identifier;
+      current_anim = id;
       playing = true;
    }
 
    bool Sprite::is_animation_finished() const
    {
-      return !playing && !animations.contains(current_animation);
+      return !playing && current_anim == std::string::npos;
    }
 
    bool Sprite::is_default_playing() const
    {
-      return playing && animations.contains(current_animation) && current_animation == idle;
+      return playing && animation_exists_by_id(current_anim) && current_anim == default_anim;
    }
 
    bool Sprite::is_playing() const
    {
-      return playing && animations.contains(current_animation);
+      return playing && animation_exists_by_id(current_anim);
    }
 
    bool Sprite::is_paused() const
    {
-      return !playing && animations.contains(current_animation);
+      return !playing && animation_exists_by_id(current_anim);
    }
 
    void Sprite::set_speed_multiplier(float multiplier)
@@ -305,7 +290,7 @@ namespace cx
 
    size_t Sprite::get_frame_index() const
    {
-      return index;
+      return frame;
    }
 
    float Sprite::get_speed_multiplier() const
@@ -313,23 +298,22 @@ namespace cx
       return speedMult;
    }
 
-   const std::string& Sprite::get_playing_animation() const
+   size_t Sprite::get_playing_animation() const
    {
-      return (is_playing() ? current_animation : empty_string);
+      return current_anim;
    }
 
-   const std::string& Sprite::get_default_animation() const
+   size_t Sprite::get_default_animation() const
    {
-      return idle;
+      return default_anim;
    }
 
    void Sprite::clear_animations()
    {
       playing = false;
-      index = 0;
+      frame = 0;
       elapsedTime = 0.f;
-      current_animation = idle = "";
-      animations.clear();
+      current_anim = default_anim = std::string::npos;
    }
 
    // Render functions
@@ -351,18 +335,8 @@ namespace cx
       return rect;
    }
 
-   std::unordered_map<std::string, Animation>& Sprite::get_animations()
-   {
-      return animations;
-   }
-
    const sf::RectangleShape& Sprite::get_sprite() const
    {
       return rect;
-   }
-
-   const std::unordered_map<std::string, Animation>& Sprite::get_animations() const
-   {
-      return animations;
    }
 }

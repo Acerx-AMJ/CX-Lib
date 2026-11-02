@@ -21,6 +21,7 @@ add_library(cx STATIC
    src/AudioManager.cpp
    src/NavigationManager.cpp
    src/Camera.cpp
+   src/AnimationManager.cpp
 )
 
 target_compile_definitions(cx PRIVATE CX_SHADER_PATH="${CMAKE_INSTALL_PREFIX}/share/cx/shaders/")

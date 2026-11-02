@@ -2,7 +2,7 @@
 #define CX_SPRITE_SPRITE_HPP
 
 #include <SFML/Graphics/RectangleShape.hpp>
-#include "CX/Sprite/Animation.hpp"
+#include "CX/Sprite/AnimationManager.hpp" // IWYU pragma: export
 #include "CX/Sprite/SpriteStyle.hpp"
 #include "CX/UIElement/UIElement.hpp"
 
@@ -153,22 +153,14 @@ namespace cx
       /// @brief Advance frame by one.
       void advance_frame();
 
-      /// @brief Add new animation to the list.
-      /// @param identifier Animation identifier.
-      /// @param animation Animation.
-      /// @param default_animation Should animation be default.
-      void add_animation(const std::string& identifier,
-                         const Animation& animation,
-                         bool default_animation = false);
-
       /// @brief Set default animation.
-      /// @param identifier Animation identifier.
-      void set_default_animation(const std::string& identifier);
+      /// @param id ID of the animation.
+      void set_default_animation(size_t id);
 
       /// @brief Play animation.
-      /// @param identifier Animation identifier.
+      /// @param id ID of the animation.
       /// @param reset Should it reset if animation is already playing.
-      void play_animation(const std::string& identifier, bool reset = false);
+      void play_animation(size_t id, bool reset = false);
 
       /// @brief Check if animation is finished.
       /// @return True if finished.
@@ -199,12 +191,12 @@ namespace cx
       float get_speed_multiplier() const;
 
       /// @brief Get name of the playing animation.
-      /// @return Name.
-      const std::string& get_playing_animation() const;
+      /// @return ID of the animation or std::string::npos if none.
+      size_t get_playing_animation() const;
 
       /// @brief Get name of the default animation.
-      /// @return Name.
-      const std::string& get_default_animation() const;
+      /// @return ID of the animation or std::string::npos if none.
+      size_t get_default_animation() const;
 
       /// @brief Clear all animations.
       void clear_animations();
@@ -227,27 +219,18 @@ namespace cx
       /// @return Sprite.
       sf::RectangleShape& get_sprite();
 
-      /// @brief Get animations.
-      /// @return Animations.
-      std::unordered_map<std::string, Animation>& get_animations();
-
       /// @brief Get sprite.
       /// @return Sprite.
       const sf::RectangleShape& get_sprite() const;
 
-      /// @brief Get animations.
-      /// @return Animations.
-      const std::unordered_map<std::string, Animation>& get_animations() const;
-
    private:
       sf::RectangleShape rect;
 
-      std::unordered_map<std::string, Animation> animations;
-      std::string current_animation;
-      std::string idle;
+      size_t current_anim = std::string::npos;
+      size_t default_anim = std::string::npos;
 
       bool playing      = false;
-      size_t index      = 0;
+      size_t frame      = 0;
       float elapsedTime = 0.f;
       float speedMult   = 1.f;
    };

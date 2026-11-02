@@ -421,7 +421,7 @@ namespace cx
 
    size_t UIElement::get_index() const
    {
-      return this->value;
+      return this->index;
    }
 
    size_t UIElement::get_value() const
