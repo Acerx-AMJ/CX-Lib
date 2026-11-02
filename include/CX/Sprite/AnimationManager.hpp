@@ -12,6 +12,12 @@ namespace cx
    /// @return ID of animation.
    size_t push_animation(const std::string &name, const Animation &animation);
 
+   /// @brief Push a new animation to the internal manager. If it already exists, override it.
+   /// @param name Name of the animation.
+   /// @param animation The animation.
+   /// @return ID of animation.
+   size_t push_animation_override(const std::string &name, const Animation &animation);
+
    /// @brief Get an animation by name.
    /// @param name Name of the animation.
    /// @return Animation.

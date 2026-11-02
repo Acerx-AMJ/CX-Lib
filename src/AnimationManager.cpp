@@ -20,6 +20,20 @@ namespace cx
       return id;
    }
 
+   size_t push_animation_override(const std::string &name, const Animation &animation)
+   {
+      if (auto it = animationIds.find(name); it != animationIds.end())
+      {
+         size_t id = it->second;
+         animations[id] = animation;
+         return id;
+      }
+      size_t id = animations.size();
+      animationIds[name] = id;
+      animations.push_back(animation);
+      return id;
+   }
+
    const Animation &get_animation_by_name(const std::string &name)
    {
       if (auto it = animationIds.find(name); it != animationIds.end())
