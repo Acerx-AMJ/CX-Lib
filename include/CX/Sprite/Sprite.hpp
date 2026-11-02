@@ -153,6 +153,10 @@ namespace cx
       /// @brief Advance frame by one.
       void advance_frame();
 
+      /// @brief Set the Y frame of the animation.
+      /// @param frame Frame Y.
+      void set_frame_y(size_t frame);
+
       /// @brief Set default animation.
       /// @param id ID of the animation.
       void set_default_animation(size_t id);
@@ -185,6 +189,10 @@ namespace cx
       /// @brief Get frame index.
       /// @return Frame index.
       size_t get_frame_index() const;
+
+      /// @brief Get frame Y.
+      /// @return Frame Y.
+      size_t get_frame_y() const;
 
       /// @brief Get speed multiplier.
       /// @return Speed multiplier.
@@ -231,6 +239,7 @@ namespace cx
 
       bool playing      = false;
       size_t frame      = 0;
+      size_t frameY     = 0;
       float elapsedTime = 0.f;
       float speedMult   = 1.f;
    };

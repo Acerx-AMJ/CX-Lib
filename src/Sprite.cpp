@@ -216,8 +216,8 @@ namespace cx
          frame = (frame + 1) % anim.length;
 
       rect.setTextureRect(Vec4i(
-         anim.posX + (anim.gap * static_cast<unsigned>(frame)) + (anim.sizeX * static_cast<unsigned>(frame)),
-         anim.posY,
+         anim.posX + (anim.gap + anim.sizeX) * (unsigned)frame,
+         anim.posY + (anim.gap + anim.sizeY) * (unsigned)frameY,
          anim.sizeX,
          anim.sizeY
       ));
@@ -240,6 +240,11 @@ namespace cx
          playing = false;
          current_anim = std::string::npos;
       }
+   }
+
+   void Sprite::set_frame_y(size_t frame)
+   {
+      frameY = frame;
    }
 
    void Sprite::set_default_animation(size_t id)
@@ -291,6 +296,11 @@ namespace cx
    size_t Sprite::get_frame_index() const
    {
       return frame;
+   }
+
+   size_t Sprite::get_frame_y() const
+   {
+      return frameY;
    }
 
    float Sprite::get_speed_multiplier() const
