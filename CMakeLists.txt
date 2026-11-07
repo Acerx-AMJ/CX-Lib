@@ -6,22 +6,23 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_library(cx STATIC
+   src/AnimationManager.cpp
+   src/AssetManager.cpp
+   src/AudioManager.cpp
+   src/Bar.cpp
+   src/Button.cpp
+   src/Camera.cpp
+   src/Circle.cpp
+   src/EventHandler.cpp
+   src/NavigationManager.cpp
+   src/ParticleManager.cpp
    src/Plane.cpp
    src/Rect.cpp
+   src/Slider.cpp
    src/Sprite.cpp
    src/Text.cpp
-   src/Button.cpp
-   src/Bar.cpp
    src/TextInput.cpp
-   src/Slider.cpp
    src/UIElement.cpp
-   src/ParticleManager.cpp
-   src/AssetManager.cpp
-   src/EventHandler.cpp
-   src/AudioManager.cpp
-   src/NavigationManager.cpp
-   src/Camera.cpp
-   src/AnimationManager.cpp
 )
 
 target_compile_definitions(cx PRIVATE CX_SHADER_PATH="${CMAKE_INSTALL_PREFIX}/share/cx/shaders/")
